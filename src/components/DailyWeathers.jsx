@@ -105,13 +105,13 @@ export default function DailyWeathers(props) {
             })}
           </Tr>
           <TableRow
-            title={"Max Tempe"}
+            title={"Max Temp"}
             data={dailyTemperatureMax}
             unit={"°C"}
             isDay={isDay}
           />
           <TableRow
-            title={"Min Tempe"}
+            title={"Min Temp"}
             data={dailyTemperatureMin}
             unit={"°C"}
             isDay={isDay}
