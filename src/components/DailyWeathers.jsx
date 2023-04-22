@@ -9,6 +9,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import useTextAndIcons from "../hooks/useTextAndIcons";
 import useDay from "../hooks/useDay";
 import useTime from "../hooks/useTime";
@@ -46,28 +47,48 @@ export default function DailyWeathers(props) {
     >
       <Table variant="striped" colorScheme="blackAlpha">
         <Thead>
-          <Tr
-            bg={isDay ? "#ffffffaa" : "#000000aa"}
-            color={isDay ? "cyan.700" : "cyan.50"}
-          >
+          <Tr bg={isDay ? "#ffffffaa" : "#000000aa"}>
             {dailyTime.map((d, i) => {
               return i ? (
-                <Th
-                  key={i}
-                  fontSize="10px"
-                  color={isDay ? "#0987A0AA" : "#EDFDFDAA"}
-                >
+                <Th key={i} color={isDay ? "#0987A0" : "#EDFDFD"}>
                   {i === 1 ? "Tommorrow" : Day(d)}
                 </Th>
               ) : (
-                <Th key={i}></Th>
+                <Th
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  key={i}
+                  color={isDay ? "#0987A0" : "#EDFDFD"}
+                >
+                  <Text display={{ lg: "none" }}>Scroll</Text>
+                  <Text
+                    fontSize="30px"
+                    fontWeight="900"
+                    pos="relative"
+                    as={motion.p}
+                    animate={{
+                      x: 20,
+                      transition: {
+                        type: "tween",
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                      },
+                    }}
+                  >
+                    →
+                  </Text>
+                </Th>
               );
             })}
           </Tr>
         </Thead>
         <Tbody>
           <Tr>
-            <Td fontSize="12px">Weather</Td>
+            <Td fontSize="12px" color={isDay ? "cyan.900" : "cyan.50"}>
+              Weather
+            </Td>
             {dailyWeatherCode.map((code, i) => {
               return i ? (
                 <Td key={i}>
@@ -77,7 +98,9 @@ export default function DailyWeathers(props) {
                       code
                     )}.svg`}
                   />
-                  <Text fontSize="10px">{getWeatherText(code)}</Text>
+                  <Text fontSize="10px" color="whiteAlpha.900">
+                    {getWeatherText(code)}
+                  </Text>
                 </Td>
               ) : null;
             })}
@@ -86,30 +109,38 @@ export default function DailyWeathers(props) {
             title={"Max Tempe"}
             data={dailyTemperatureMax}
             unit={"°C"}
+            isDay={isDay}
           />
           <TableRow
             title={"Min Tempe"}
             data={dailyTemperatureMin}
             unit={"°C"}
+            isDay={isDay}
           />
           <TableRow
             title={"Max Feels Like"}
             data={dailyApparentTemperatureMax}
             unit={"°C"}
+            isDay={isDay}
           />
           <TableRow
             title={"Min Feels Like"}
             data={dailyApparentTemperatureMin}
             unit={"°C"}
+            isDay={isDay}
           />
           <Tr>
-            <Td fontSize="12px">Sunrise</Td>
+            <Td fontSize="12px" color={isDay ? "cyan.900" : "cyan.50"}>
+              Sunrise
+            </Td>
             {sunrise.map((t, i) => {
               return i ? <Td key={i}>{Time(t)}</Td> : null;
             })}
           </Tr>
           <Tr>
-            <Td fontSize="12px">Sunset</Td>
+            <Td fontSize="12px" color={isDay ? "cyan.900" : "cyan.50"}>
+              Sunset
+            </Td>
             {sunset.map((t, i) => {
               return i ? <Td key={i}>{Time(t)}</Td> : null;
             })}
@@ -118,11 +149,13 @@ export default function DailyWeathers(props) {
             title={"Chance of Rain"}
             data={dailyChanceOfRain}
             unit={"%"}
+            isDay={isDay}
           />
           <TableRow
             title={"Wind Speed"}
             data={dailyWindSpeedMax}
             unit={"km/h"}
+            isDay={isDay}
           />
         </Tbody>
       </Table>

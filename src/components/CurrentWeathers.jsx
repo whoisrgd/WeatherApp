@@ -41,7 +41,6 @@ export default function CurrentWeathers(props) {
       backdropBlur="4px"
       border={`1px solid ${isDay ? "#ffffff60" : "#00000060"}`}
       p="10px"
-      // m={{ base: "10px 10px 0", md: "20px 0 20px 20px" }}
       color={isDay ? "cyan.700" : "cyan.50"}
       fontWeight="700"
       display="flex"
@@ -115,7 +114,7 @@ export default function CurrentWeathers(props) {
           value1={dailyChanceOfRain[0] + " %"}
           title1={"Rain"}
           icon2={<WiHumidity color="#FEFCBF" />}
-          value2={hourlyHumidity[0] + " %"}
+          value2={hourlyHumidity[new Date().getHours()] + " %"}
           title2={"Humidity"}
           isDay={isDay}
         />

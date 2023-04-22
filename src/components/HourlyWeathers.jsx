@@ -10,7 +10,7 @@ export default function HourlyWeathers(props) {
     hourlyWeatherCode,
     hourlyHumidity,
     hourlyApparentTemperature,
-    hourlyRain,
+    hourlyChanceOfRain,
     hourlyWindSpeed,
     isDay,
   } = props;
@@ -22,7 +22,7 @@ export default function HourlyWeathers(props) {
   const CodeArr = getNextHoursArr(hourlyWeatherCode);
   const HumidityArr = getNextHoursArr(hourlyHumidity);
   const FLTempArr = getNextHoursArr(hourlyApparentTemperature);
-  const RainArr = getNextHoursArr(hourlyRain);
+  const RainArr = getNextHoursArr(hourlyChanceOfRain);
   const WindSpeedArr = getNextHoursArr(hourlyWindSpeed);
 
   return (
@@ -64,41 +64,45 @@ export default function HourlyWeathers(props) {
             <Text fontSize="10px">{getWeatherText(CodeArr[i])}</Text>
             <Text>{TempArr[i]} °C</Text>
             <Box
-              fontSize="10px"
+              fontSize={{ base: "8px", md: "10px" }}
+              m="2px 0"
               w="90%"
               display="flex"
               justifyContent="space-between"
-              borderBottom={`1px solid ${isDay ? "#ffffff30" : "#00000030"}`}
+              borderBottom={`1px solid ${isDay ? "#ffffff90" : "#00000090"}`}
             >
               <Text>Feel</Text>
               <Text>{FLTempArr[i]} °C</Text>
             </Box>
             <Box
-              fontSize="10px"
+              fontSize={{ base: "8px", md: "10px" }}
+              m="2px 0"
               w="90%"
               display="flex"
               justifyContent="space-between"
-              borderBottom={`1px solid ${isDay ? "#ffffff30" : "#00000030"}`}
+              borderBottom={`1px solid ${isDay ? "#ffffff90" : "#00000090"}`}
             >
               <Text>Humidity</Text>
               <Text>{HumidityArr[i]} %</Text>
             </Box>
             <Box
-              fontSize="10px"
+              fontSize={{ base: "8px", md: "10px" }}
+              m="2px 0"
               w="90%"
               display="flex"
               justifyContent="space-between"
-              borderBottom={`1px solid ${isDay ? "#ffffff30" : "#00000030"}`}
+              borderBottom={`1px solid ${isDay ? "#ffffff90" : "#00000090"}`}
             >
               <Text>Rain</Text>
-              <Text>{RainArr[i]} mm</Text>
+              <Text>{RainArr[i]} %</Text>
             </Box>
             <Box
-              fontSize="10px"
+              fontSize={{ base: "8px", md: "10px" }}
+              m="2px 0"
               w="90%"
               display="flex"
               justifyContent="space-between"
-              borderBottom={`1px solid ${isDay ? "#ffffff30" : "#00000030"}`}
+              borderBottom={`1px solid ${isDay ? "#ffffff90" : "#00000090"}`}
             >
               <Text>Wind</Text>
               <Text>{WindSpeedArr[i]} km/h</Text>

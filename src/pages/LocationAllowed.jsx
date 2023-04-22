@@ -34,7 +34,7 @@ export default function LocationAllowed() {
     hourlyWeatherCode,
     hourlyHumidity,
     hourlyApparentTemperature,
-    hourlyRain,
+    hourlyChanceOfRain,
     hourlyWindSpeed,
     dailyTime,
     dailyWeatherCode,
@@ -86,7 +86,7 @@ export default function LocationAllowed() {
           hourlyWeatherCode={hourlyWeatherCode}
           hourlyHumidity={hourlyHumidity}
           hourlyApparentTemperature={hourlyApparentTemperature}
-          hourlyRain={hourlyRain}
+          hourlyChanceOfRain={hourlyChanceOfRain}
           hourlyWindSpeed={hourlyWindSpeed}
           isDay={isDay}
         />
