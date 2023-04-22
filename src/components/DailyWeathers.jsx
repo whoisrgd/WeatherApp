@@ -63,7 +63,6 @@ export default function DailyWeathers(props) {
                 >
                   <Text display={{ lg: "none" }}>Scroll</Text>
                   <Text
-                    fontSize="30px"
                     fontWeight="900"
                     pos="relative"
                     as={motion.p}
